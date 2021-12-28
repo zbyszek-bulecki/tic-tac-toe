@@ -13,6 +13,7 @@ public class Game {
     private char [][] grid; // a 2D array of chars representing the game grid
     private int freeSpots; // counts the number of empty spots remaining on the board (starts from 9  and counts down)
     private static GameUI gui;
+    private static int moveCounter;
 
     /**
      * Create a new single player game
@@ -149,8 +150,82 @@ public class Game {
      * @return String indicating the outcome of the game: "X wins" or "O wins" or "Tie" or "None"
      */
     public String checkGameWinner(char [][]grid){
+
         String result = "None";
-        //Student code goes here ...
+
+        int emptyCounter = 0;
+
+        for (int i=0; i<3; i++) { // loop for searching through columns
+            for (int j=0; j<3; j++) { // loop for searching through rows
+
+                if (grid[i][j] == '-') {
+                    emptyCounter++;
+                }
+            } // end of loop for searching through rows
+        } // end of loop for searching through columns */
+
+        if (emptyCounter == 0) {
+            result="Tie";
+        }
+
+        // vertical x
+
+        if      (grid[0][0] == 'x' && grid[0][1] == 'x' && grid[0][2] == 'x') { // column 1 x
+            result = "X wins";}
+        else if (grid[1][0] == 'x' && grid[1][1] == 'x' && grid[1][2] == 'x') { // column 2 x
+            result = "X wins";}
+        else if (grid[2][0] == 'x' && grid[2][1] == 'x' && grid[2][2] == 'x'){ // column 3 x
+            result = "X wins";
+        }
+
+        // horizontal x
+
+        else if (grid[0][0] == 'x' && grid[1][0] == 'x' && grid[2][0] == 'x') { // row 1 x
+            result = "X wins";}
+        else if (grid[0][1] == 'x' && grid[1][1] == 'x' && grid[2][1] == 'x') { // row 2 x
+            result = "X wins";}
+        else if (grid[0][2] == 'x' && grid[1][2] == 'x' && grid[2][2] == 'x'){ // row 3 x
+            result = "X wins";
+        }
+
+        // diagonal x
+
+        else if (grid[0][0] == 'x' && grid[1][1] == 'x' && grid[2][2] == 'x') { // diagonal 1 x
+            result = "X wins";}
+        else if (grid[2][0] == 'x' && grid[1][1] == 'x' && grid[0][2] == 'x'){ // diagonal 2 x
+            result = "X wins";
+        }
+
+        // vertical o
+
+        else if(grid[0][0] == 'o' && grid[0][1] == 'o' && grid[0][2] == 'o') { // column 1 o
+            result = "O wins";}
+        else if (grid[1][0] == 'o' && grid[1][1] == 'o' && grid[1][2] == 'o') { // column 2 o
+            result = "O wins";}
+        else if (grid[2][0] == 'o' && grid[2][1] == 'o' && grid[2][2] == 'o'){ // column 3 o
+            result = "O wins";
+        }
+
+        // horizontal o
+
+        else if(grid[0][0] == 'o' && grid[1][0] == 'o' && grid[2][0] == 'o') { // row 1 o
+            result = "O wins";}
+        else if (grid[0][1] == 'o' && grid[1][1] == 'o' && grid[2][1] == 'o') { // row 2 o
+            result = "O wins";}
+        else if (grid[0][2] == 'o' && grid[1][2] == 'o' && grid[2][2] == 'o'){ // row3 o
+            result = "O wins";
+        }
+
+        // diagonal o
+
+        else if (grid[0][0] == 'o' && grid[1][1] == 'o' && grid[2][2] == 'o') { // diagonal 1 o
+            result = "O wins";}
+        else if (grid[2][0] == 'o' && grid[1][1] == 'o' && grid[0][2] == 'o') { // diagonal 2 o
+            return "O wins";
+        }
+
+        // result = emptyCounter == 0 ? "Tie" : "None";
+
         return result;
     }
 
